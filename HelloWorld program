@@ -1,0 +1,40 @@
+program HelloWorld;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils,
+  StrUtils,
+  Dialogs;
+
+var
+  vCount, i: Integer;
+  vStr, vReverseStr, vUserStr: string;
+begin
+ vCount := 0;
+ Writeln('Hello World!');
+ Readln;
+ WriteLn(Output, 'Enter how many times ''Hello world'' should appear');
+ try
+ ReadLn(Input, vCount);
+ except
+  on E : EInOutError do
+  begin
+   ShowMessage('Enter a number!');
+   Readln(Input, vCount);
+  end;
+ end;
+
+ for i := 0 to vCount - 1 do
+  Writeln('Hello World!');
+ Readln;
+
+ vStr := 'Hello World!';
+ Writeln(Output, 'Type ' + vstr + ' backwards');
+ vReverseStr :=  ReverseString(vStr);
+ Readln(Input, vUserStr);
+ if vUserStr = vReverseStr then
+  ShowMessage('Correct')
+ else
+  ShowMessage('Wrong');
+end.
